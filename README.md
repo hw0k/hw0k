@@ -14,3 +14,6 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 -->
+
+세상이 아름다워지는 것을 지향하는 프론트엔드 개발자, 남현욱입니다.
+I'm frontend developer Henry Nam, who oriented towards the beauty of the world.

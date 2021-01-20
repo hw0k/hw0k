@@ -1,0 +1,11 @@
+name: 'rss-feed-subscriber'
+description: 'RSS Feed Subscriber'
+author: 'hw0k'
+inputs:
+  url:
+    required: false
+    description: 'URL of RSS Feed'
+    default: 'https://hw0k.me/rss.xml'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'

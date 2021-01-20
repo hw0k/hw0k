@@ -1,0 +1,27 @@
+{
+  "name": "hw0k",
+  "version": "1.0.0",
+  "main": "lib/main.js",
+  "repository": "https://github.com/hw0k/hw0k.git",
+  "author": "hw0k <hw0knam@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "ts-node index.ts",
+    "build": "tsc",
+    "pack": "ncc build --source-map --license licenses.txt",
+    "all": "npm run build && npm run pack"
+  },
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/github": "^4.0.0",
+    "dayjs": "^1.10.3",
+    "rss-parser": "^3.10.0"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.22",
+    "@types/xml2js": "^0.4.7",
+    "@vercel/ncc": "^0.27.0",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3"
+  }
+}

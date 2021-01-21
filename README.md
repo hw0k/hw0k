@@ -4,5 +4,5 @@
 
 ### 블로그 포스트
 
-- [돌아보는 2020년 한 해](https://hw0k.me/2020-retrospective/) `NEW!`
+- [돌아보는 2020년 한 해](https://hw0k.me/2020-retrospective/)
 - [이전 포스트 모아보기](https://hw0k.me/previous-posts/)

@@ -16,13 +16,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core_1 = __nccwpck_require__(2186);
-const parse_rss_1 = __importDefault(__nccwpck_require__(4975));
-const write_readme_1 = __importDefault(__nccwpck_require__(475));
+const parse_rss_1 = __nccwpck_require__(4975);
+const write_readme_1 = __nccwpck_require__(475);
 function run() {
     var _a;
     return __awaiter(this, void 0, void 0, function* () {
@@ -57,11 +54,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const rss_parser_1 = __importDefault(__nccwpck_require__(6946));
+const rss_parser_1 = __nccwpck_require__(6946);
 function parseRSS(url) {
     return __awaiter(this, void 0, void 0, function* () {
         const parser = new rss_parser_1.default();
@@ -100,18 +94,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const fs_1 = __nccwpck_require__(5747);
 const path_1 = __nccwpck_require__(5622);
-const dayjs_1 = __importDefault(__nccwpck_require__(7401));
+const dayjs_1 = __nccwpck_require__(7401);
 function writeReadme(items) {
     return __awaiter(this, void 0, void 0, function* () {
         const str = items.map(getStringOfItem).join('\n');
         const readme = generateReadme(str);
-        yield writeFileAsync(__nccwpck_require__.ab + "README.md", readme);
+        yield writeFileAsync(path_1.resolve(path_1.join(__dirname + '..', 'README.md')), readme);
     });
 }
 function generateReadme(str) {
@@ -8009,7 +8000,7 @@ module.exports = require("url");;
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat */
 /******/ 	
-/******/ 	__nccwpck_require__.ab = __dirname + "/../";/************************************************************************/
+/******/ 	__nccwpck_require__.ab = __dirname + "/";/************************************************************************/
 /******/ 	// module exports must be returned from runtime so entry inlining is disabled
 /******/ 	// startup
 /******/ 	// Load entry module and return exports

@@ -2,143 +2,6 @@ require('./sourcemap-register.js');module.exports =
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 3109:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-const core_1 = __nccwpck_require__(2186);
-const parse_rss_1 = __nccwpck_require__(4975);
-const write_readme_1 = __nccwpck_require__(475);
-function run() {
-    var _a;
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            const url = (_a = core_1.getInput('url')) !== null && _a !== void 0 ? _a : 'https://hw0k.me/rss.xml';
-            const items = yield parse_rss_1.default(url);
-            items.forEach(item => core_1.info(`${item.pubDate} - ${item.title} - ${item.link}`));
-            yield write_readme_1.default(items);
-        }
-        catch (err) {
-            console.error(err);
-            core_1.setFailed(err.message);
-        }
-    });
-}
-run();
-
-
-/***/ }),
-
-/***/ 4975:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-const rss_parser_1 = __nccwpck_require__(6946);
-function parseRSS(url) {
-    return __awaiter(this, void 0, void 0, function* () {
-        const parser = new rss_parser_1.default();
-        const feed = yield parser.parseURL(url);
-        const items = feed.items.map(mapItem).filter(filterItem).slice(0, 5);
-        return items;
-    });
-}
-function mapItem({ title, link, pubDate }) {
-    return { title, link, pubDate };
-}
-function isValid(str) {
-    return !!str && str !== '';
-}
-function filterItem(item) {
-    const { title, link, pubDate } = item;
-    // TODO: link, pubDate validate 따로 해야 함
-    return isValid(title) && isValid(link) && isValid(pubDate);
-}
-exports.default = parseRSS;
-
-
-/***/ }),
-
-/***/ 475:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-const fs_1 = __nccwpck_require__(5747);
-const path_1 = __nccwpck_require__(5622);
-const dayjs_1 = __nccwpck_require__(7401);
-function writeReadme(items) {
-    return __awaiter(this, void 0, void 0, function* () {
-        const str = items.map(getStringOfItem).join('\n');
-        const readme = generateReadme(str);
-        yield writeFileAsync(path_1.resolve(path_1.join(__dirname + '..', 'README.md')), readme);
-    });
-}
-function generateReadme(str) {
-    return `### Hi there 👋
-
-세상이 아름다워지는 것을 지향하는 프론트엔드 개발자, 남현욱입니다.
-
-### 블로그 포스트
-
-${str}
-`;
-}
-function isNewItem({ pubDate }) {
-    const now = dayjs_1.default();
-    const itemPubDate = dayjs_1.default(pubDate);
-    return now.isAfter(itemPubDate) && now.isBefore(itemPubDate.add(7, 'day'));
-}
-function getStringOfItem(item) {
-    return `- [${item.title}](${item.link})${isNewItem(item) ? ' `NEW!`' : ''}`;
-}
-function writeFileAsync(path, data) {
-    return new Promise((resolve, reject) => {
-        fs_1.writeFile(path, data, (err) => {
-            if (err) {
-                reject(err);
-                return;
-            }
-            resolve();
-        });
-    });
-}
-exports.default = writeReadme;
-
-
-/***/ }),
-
 /***/ 7351:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
@@ -7854,6 +7717,152 @@ utils.getEncodingFromContentType = function(contentType) {
 
 /***/ }),
 
+/***/ 399:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const core_1 = __nccwpck_require__(2186);
+const parse_rss_1 = __importDefault(__nccwpck_require__(3886));
+const write_readme_1 = __importDefault(__nccwpck_require__(4712));
+function run() {
+    var _a;
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const url = (_a = core_1.getInput('url')) !== null && _a !== void 0 ? _a : 'https://hw0k.me/rss.xml';
+            const items = yield parse_rss_1.default(url);
+            items.forEach(item => core_1.info(`${item.pubDate} - ${item.title} - ${item.link}`));
+            yield write_readme_1.default(items);
+        }
+        catch (err) {
+            console.error(err);
+            core_1.setFailed(err.message);
+        }
+    });
+}
+run();
+
+
+/***/ }),
+
+/***/ 3886:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const rss_parser_1 = __importDefault(__nccwpck_require__(6946));
+function parseRSS(url) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const parser = new rss_parser_1.default();
+        const feed = yield parser.parseURL(url);
+        const items = feed.items.map(mapItem).filter(filterItem).slice(0, 5);
+        return items;
+    });
+}
+function mapItem({ title, link, pubDate }) {
+    return { title, link, pubDate };
+}
+function isValid(str) {
+    return !!str && str !== '';
+}
+function filterItem(item) {
+    const { title, link, pubDate } = item;
+    // TODO: link, pubDate validate 따로 해야 함
+    return isValid(title) && isValid(link) && isValid(pubDate);
+}
+exports.default = parseRSS;
+
+
+/***/ }),
+
+/***/ 4712:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const fs_1 = __nccwpck_require__(5747);
+const path_1 = __nccwpck_require__(5622);
+const dayjs_1 = __importDefault(__nccwpck_require__(7401));
+function writeReadme(items) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const str = items.map(getStringOfItem).join('\n');
+        const readme = generateReadme(str);
+        yield writeFileAsync(path_1.resolve(path_1.join(__dirname + '..', 'README.md')), readme);
+    });
+}
+function generateReadme(str) {
+    return `### Hi there 👋
+
+세상이 아름다워지는 것을 지향하는 프론트엔드 개발자, 남현욱입니다.
+
+### 블로그 포스트
+
+${str}
+`;
+}
+function isNewItem({ pubDate }) {
+    const now = dayjs_1.default();
+    const itemPubDate = dayjs_1.default(pubDate);
+    return now.isAfter(itemPubDate) && now.isBefore(itemPubDate.add(7, 'day'));
+}
+function getStringOfItem(item) {
+    return `- [${item.title}](${item.link})${isNewItem(item) ? ' `NEW!`' : ''}`;
+}
+function writeFileAsync(path, data) {
+    return new Promise((resolve, reject) => {
+        fs_1.writeFile(path, data, (err) => {
+            if (err) {
+                reject(err);
+                return;
+            }
+            resolve();
+        });
+    });
+}
+exports.default = writeReadme;
+
+
+/***/ }),
+
 /***/ 4589:
 /***/ ((module) => {
 
@@ -8004,7 +8013,7 @@ module.exports = require("url");;
 /******/ 	// module exports must be returned from runtime so entry inlining is disabled
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	return __nccwpck_require__(3109);
+/******/ 	return __nccwpck_require__(399);
 /******/ })()
 ;
 //# sourceMappingURL=index.js.map

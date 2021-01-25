@@ -7,9 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "ts-node index.ts",
-    "build": "tsc",
-    "pack": "ncc build --source-map --license licenses.txt",
-    "all": "npm run build && npm run pack"
+    "build": "ncc build ./src/main.ts --source-map --license licenses.txt"
   },
   "dependencies": {
     "@actions/core": "^1.2.6",

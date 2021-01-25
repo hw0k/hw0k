@@ -2,11 +2,11 @@
   "compilerOptions": {
     "target": "es6",
     "module": "commonjs",
-    "outDir": "./lib",
+    "outDir": "./dist",
     "rootDir": "./src",
     "strict": true,
     "noImplicitAny": true,
-    "allowSyntheticDefaultImports": true
+    "esModuleInterop": true
   },
   "exclude": ["node_modules"]
 }

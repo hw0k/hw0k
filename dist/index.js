@@ -7826,7 +7826,7 @@ function writeReadme(items) {
     return __awaiter(this, void 0, void 0, function* () {
         const str = items.map(getStringOfItem).join('\n');
         const readme = generateReadme(str);
-        yield writeFileAsync(path_1.resolve(path_1.join(__dirname + '..', 'README.md')), readme);
+        yield writeFileAsync(__nccwpck_require__.ab + "README.md", readme);
     });
 }
 function generateReadme(str) {
@@ -8009,7 +8009,7 @@ module.exports = require("url");;
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat */
 /******/ 	
-/******/ 	__nccwpck_require__.ab = __dirname + "/";/************************************************************************/
+/******/ 	__nccwpck_require__.ab = __dirname + "/../";/************************************************************************/
 /******/ 	// module exports must be returned from runtime so entry inlining is disabled
 /******/ 	// startup
 /******/ 	// Load entry module and return exports

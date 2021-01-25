@@ -8,7 +8,7 @@ async function writeReadme(items: ParsedItem[]) {
   const str = items.map(getStringOfItem).join('\n');
   const readme = generateReadme(str);
 
-  await writeFileAsync(resolve(join(__dirname + '..', 'README.md')), readme);
+  await writeFileAsync(resolve(join(__dirname, '..', 'README.md')), readme);
 }
 
 function generateReadme(str: string) {

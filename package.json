@@ -10,7 +10,7 @@
     "build": "ncc build ./src/main.ts --source-map --license licenses.txt"
   },
   "dependencies": {
-    "@actions/core": "^1.2.6",
+    "@actions/core": "^1.9.1",
     "@actions/github": "^4.0.0",
     "dayjs": "^1.10.3",
     "rss-parser": "^3.10.0"
